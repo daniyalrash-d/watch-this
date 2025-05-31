@@ -47,8 +47,7 @@ export default function Home() {
 
   return (
     <main className="max-w-xl mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6">Watch-this</h1>
-
+      
       <form onSubmit={handleSubmit} className="space-y-4">
         <label className="block">
           What are you looking for?
