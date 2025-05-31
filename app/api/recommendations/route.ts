@@ -10,11 +10,11 @@ export async function POST(request: Request) {
     // Construct prompt based on input (handle both genre & title given)
     let prompt = ''
     if (title && genre) {
-      prompt = `Suggest top 10 ${type}s similar to the ${type} titled "${title}" in the ${genre} genre. Provide titles only.`
+      prompt = `Suggest top 10 ${type}s similar to the ${type} titled "${title}" in the ${genre} genre. Strictly Provide titles only, no other texts in response.`
     } else if (title) {
-      prompt = `Suggest top 10 ${type}s similar to the ${type} titled "${title}". Provide titles only.`
+      prompt = `Suggest top 10 ${type}s similar to the ${type} titled "${title}". Strictly Provide titles only, no other texts in response.`
     } else if (genre) {
-      prompt = `Suggest top 10 ${type}s in the ${genre} genre. Provide titles only.`
+      prompt = `Suggest top 10 ${type}s in the ${genre} genre. Strictly Provide titles only, no other texts in response.`
     } else {
       return NextResponse.json({ error: 'Please provide a title or genre.' }, { status: 400 })
     }
