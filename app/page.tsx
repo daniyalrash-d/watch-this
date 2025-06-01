@@ -46,15 +46,14 @@ export default function Home() {
   }
 
   return (
-    <main className="max-w-xl mx-auto p-4">
-      
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <label className="block">
+    <main className="container">
+      <form onSubmit={handleSubmit} className="form">
+        <label className="label">
           What are you looking for?
           <select
             value={type}
             onChange={(e) => setType(e.target.value)}
-            className="block w-full mt-1 p-2 border rounded"
+            className="input"
           >
             <option value="movie">Movie</option>
             <option value="series">TV Series</option>
@@ -62,49 +61,48 @@ export default function Home() {
           </select>
         </label>
 
-        <label className="block">
+        <label className="label">
           Choose a genre (optional)
           <input
             type="text"
             placeholder="e.g., Action, Romance, Thriller"
             value={genre}
             onChange={(e) => setGenre(e.target.value)}
-            className="block w-full mt-1 p-2 border rounded"
+            className="input"
           />
         </label>
 
-        <label className="block">
+        <label className="label">
           Or enter a title you already love (optional)
           <input
             type="text"
             placeholder="e.g., Inception"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="block w-full mt-1 p-2 border rounded"
+            className="input"
           />
         </label>
 
         <button
           type="submit"
           disabled={loading}
-          className="bg-blue-600 text-white px-4 py-2 rounded disabled:opacity-50"
+          className="button"
         >
           {loading ? 'Loading...' : 'Get Suggestions'}
         </button>
       </form>
 
-      {error && <p className="mt-4 text-red-600">{error}</p>}
+      {error && <p className="error">{error}</p>}
 
       {results.length > 0 && (
-        <section className="mt-6">
-          <h2 className="text-2xl font-semibold mb-4">Suggestions</h2>
-          <ul className="list-disc list-inside space-y-2">
-            {results.map((title, i) => (
-              <li key={i}>{title}</li>
-            ))}
-          </ul>
-
-        </section>
+		<section className="results-section">
+		  <h2>Suggestions</h2>
+		  <ul className="results-list">
+			{results.map((title, i) => (
+			  <li key={i}>{title}</li>
+			))}
+		  </ul>
+		</section>
       )}
     </main>
   )
